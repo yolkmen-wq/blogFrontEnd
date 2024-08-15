@@ -24,6 +24,16 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <!-- # Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- # CSS Plugins -->
+    <link rel="stylesheet" href="./bootstrap.min.css" />
     <title>React App</title>
   </head>
   <body>
@@ -39,5 +49,68 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- # JS Plugins -->
+    <script src="./jquery.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <script>
+      // Preloader js
+      function preloader() {
+        "use strict";
+        $(".preloader").delay(100).fadeOut(10);
+      }
+      $(preloader);
+
+      (function ($) {
+        "use strict";
+        // tab
+        $(".tab-content")
+          .find(".tab-pane")
+          .each(function (idx, item) {
+            var navTabs = $(this).closest(".code-tabs").find(".nav-tabs"),
+              title = $(this).attr("title");
+            navTabs.append(
+              '<li class="nav-item"><a class="nav-link" href="#">' +
+                title +
+                "</a></li>"
+            );
+          });
+
+        $(".code-tabs ul.nav-tabs").each(function () {
+          $(this).find("li:first").addClass("active");
+        });
+
+        $(".code-tabs .tab-content").each(function () {
+          $(this).find("div:first").addClass("active");
+        });
+
+        $(".nav-tabs a").click(function (e) {
+          e.preventDefault();
+          var tab = $(this).parent(),
+            tabIndex = tab.index(),
+            tabPanel = $(this).closest(".code-tabs"),
+            tabPane = tabPanel.find(".tab-pane").eq(tabIndex);
+          tabPanel.find(".active").removeClass("active");
+          tab.addClass("active");
+          tabPane.addClass("active");
+        });
+
+        // Accordions
+        $(".collapse")
+          .on("shown.bs.collapse", function () {
+            $(this)
+              .parent()
+              .find(".ti-plus")
+              .removeClass("ti-plus")
+              .addClass("ti-minus");
+          })
+          .on("hidden.bs.collapse", function () {
+            $(this)
+              .parent()
+              .find(".ti-minus")
+              .removeClass("ti-minus")
+              .addClass("ti-plus");
+          });
+      })(jQuery);
+    </script>
   </body>
 </html>
