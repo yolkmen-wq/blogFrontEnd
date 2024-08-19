@@ -44,8 +44,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyright bg-dark content">
-        <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">
-          网页模板
+        <a target="_blank" href="http://www.mobanwang.com/" title="博客">
+          Blog
         </a>
       </div>
     </footer>
