@@ -1,18 +1,15 @@
 import Nav from "@components/Nav/Nav";
-import Header from "@components/Header/Header";
+import Header from "./components/Header";
 import Search from "@views/Search/Search";
-import Container from "@views/Container/Container";
-import { Fragment, useState } from "react";
+import Container from "./components/Container";
+import { Fragment, useState, useEffect } from "react";
+import { getArticleList, getTags } from "@/api/article";
 const Home = () => {
-  const [isShowSearch, setIsShowSearch] = useState(false);
-  const handleButtonClick = () => {
-    setIsShowSearch(!isShowSearch);
-  };
   return (
     <Fragment>
-      <Nav onButtonClick={handleButtonClick} />
+      <Nav />
       <Header />
-      <Search isShowSearch={isShowSearch} onButtonClick={handleButtonClick} />
+      <Search />
       <Container />
     </Fragment>
   );

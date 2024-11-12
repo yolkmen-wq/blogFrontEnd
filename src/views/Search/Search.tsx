@@ -1,8 +1,14 @@
-interface SearchProps {
-  isShowSearch: boolean;
-  onButtonClick: () => void;
-}
-const Search: React.FC<SearchProps> = ({ isShowSearch, onButtonClick }) => {
+import { useSelector, useDispatch } from "react-redux";
+import { setIsShowSearch } from "@/store/modules/searchSlice";
+const Search = () => {
+  const dispatch = useDispatch();
+
+  const onButtonClick = () => {
+    dispatch(setIsShowSearch());
+  };
+  const isShowSearch = useSelector(
+    (state: any) => state.searchSlice.isShowSearch
+  );
   return (
     <div className={`search-page ${isShowSearch ? "search-active" : ""}`}>
       <div

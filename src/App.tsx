@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Nav from "@components/Nav/Nav";
-
+import Footer from "@components/Footer/Footer";
 function App() {
-  const [isShowSearch, setIsShowSearch] = useState(false);
-  const handleButtonClick = () => {
-    setIsShowSearch(!isShowSearch);
-  };
-  return <Nav onButtonClick={handleButtonClick} />;
+  return (
+    <Fragment>
+      <Nav />
+      <Footer />
+    </Fragment>
+  );
 }
 
 export default App;

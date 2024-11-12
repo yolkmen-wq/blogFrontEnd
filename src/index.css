@@ -1474,7 +1474,12 @@ samp {
 .post-content-preview {
     font-size: 13px;
     font-style: italic;
-    color: #a3a3a3
+    color: #a3a3a3;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .post-content-preview:hover {
@@ -1655,7 +1660,7 @@ img::-moz-selection {
 
 .tags a>sup,
 .tags .tag>sup {
-    margin-left: -2px;
+    margin-left: 2px;
     font-weight: 700
 }
 
@@ -1699,7 +1704,7 @@ img::-moz-selection {
     border: none;
     line-height: 28px;
     margin: 0 2px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     background: #f3f5f5
 }
 
@@ -1909,4 +1914,16 @@ img::-moz-selection {
 
 .no-scroll {
     overflow-y: hidden
+}
+
+pre {
+    background: #282c34 !important;
+    /* 根据暗黑主题的背景色进行调整 */
+    color: #abb2bf !important;
+    /* 根据暗黑主题的文本色进行调整 */
+}
+
+code {
+    color: inherit !important;
+    /* 让 <code> 使用继承的颜色 */
 }

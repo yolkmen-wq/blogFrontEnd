@@ -1,19 +1,28 @@
 import Nav from "@components/Nav/Nav";
-import Header from "@components/Header/Header";
+import Header from "./components/Header";
 import Search from "@views/Search/Search";
-import Container from "@views/Container/Container";
-import { Fragment, useState } from "react";
+import Container from "./components/Container";
+import { Fragment, useState, useEffect } from "react";
+import { getArticleList } from "@/api/article";
 const Home = () => {
-  const [isShowSearch, setIsShowSearch] = useState(false);
-  const handleButtonClick = () => {
-    setIsShowSearch(!isShowSearch);
-  };
+  const [articleList, setArticleList] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+
+  useEffect(() => {
+    console.log("getArticleList");
+    (async function () {
+      const res = await getArticleList(pageNum, pageSize);
+      console.log(res);
+      setArticleList(res.data);
+    })();
+  }, []);
   return (
     <Fragment>
-      <Nav onButtonClick={handleButtonClick} />
+      <Nav />
       <Header />
-      <Search isShowSearch={isShowSearch} onButtonClick={handleButtonClick} />
-      <Container />
+      <Search />
+      <Container articleList={articleList} />
     </Fragment>
   );
 };

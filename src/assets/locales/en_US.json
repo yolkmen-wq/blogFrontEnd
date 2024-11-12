@@ -1,3 +1,14 @@
 {
-    "hello": "Hello"
+    "title": "Title",
+    "title_required": "Please input your Title!",
+    "brief ": "Brief",
+    "brief_required": "Please input your Brief!",
+    "article": "Article",
+    "article_required": "Please input your article!",
+    "tag": "Tag",
+    "tags_required": "Please select your tags!",
+    "tags_placeholder": "Please select your tags!",
+    "submit": "Submit",
+    "create_success": "Publish Success!"
+
 }

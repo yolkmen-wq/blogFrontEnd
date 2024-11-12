@@ -9,4 +9,14 @@ module.exports = {
       "@utils": path.resolve(__dirname, "src/utils"),
     },
   },
+  devServer: {
+    proxy: {
+      "/api": {
+        // target: "http://localhost:1323",
+        target: "http://47.121.201.137:5757",
+        changeOrigin: true,
+        pathRewrite: { "^/api": "" },
+      },
+    },
+  },
 };

@@ -1,3 +1,13 @@
 {
-    "hello": "你好"
+    "title": "标题",
+    "title_required": "请输入您的标题！",
+    "brief ": "简介",
+    "brief_required": "请输入您的简介！",
+    "article": "文章",
+    "article_required": "请输入您的文章!",
+    "tag": "标签",
+    "tags_required": "请选择标签!",
+    "tags_placeholder": "请选择标签",
+    "submit": "提交",
+    "create_success": "发布成功！"
 }
