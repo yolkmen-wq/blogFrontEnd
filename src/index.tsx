@@ -6,6 +6,8 @@ import router from "./router";
 import "./i18n";
 import { store } from "./store";
 import { Provider } from "react-redux";
+import "@assets/css/flower.css";
+import "@utils/pointer-flower";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -9,5 +9,11 @@
     "tags_required": "请选择标签!",
     "tags_placeholder": "请选择标签",
     "submit": "提交",
-    "create_success": "发布成功！"
+    "create_success": "发布成功！",
+    "variant": "变换",
+    "article_publish": "文章发布",
+    "link": "外链",
+    "link_publish": "外链发布",
+    "link_type": "链接类型"
+
 }

@@ -9,6 +9,11 @@
     "tags_required": "Please select your tags!",
     "tags_placeholder": "Please select your tags!",
     "submit": "Submit",
-    "create_success": "Publish Success!"
+    "create_success": "Publish Success!",
+    "variant": "variant",
+    "article_publish": "Article Publish",
+    "link": "Link",
+    "link_publish": "Link Publish",
+    "link_type": "Link Type"
 
 }

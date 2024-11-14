@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/",
+        path: "/home",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <Home />
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         index: true,
-        path: "/about",
+        // path: "/about",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <About />

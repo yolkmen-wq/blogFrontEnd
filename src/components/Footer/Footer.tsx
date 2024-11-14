@@ -1,4 +1,10 @@
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 const Footer = () => {
+  const visitsCount =
+    useSelector((state: any) => state.footSlice.visitsCount) ||
+    localStorage.getItem("visitsCount");
+
   return (
     <footer>
       <div className="container">
@@ -47,7 +53,8 @@ const Footer = () => {
             <p className="copyright text-muted">
               Copyright © WQ Blog 2024
               <br />
-              Powered by <a href="https://huangxuan.me">WQ Blog</a> |
+              Powered by <a href="https://huangxuan.me">WQ Blog</a> | Visits:{" "}
+              {visitsCount} |
               <iframe
                 style={{ marginLeft: "2px", marginBottom: "-5px" }}
                 frameBorder="0"

@@ -2,14 +2,25 @@ import SideBar from "@components/SideBar/SideBar";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const Container = () => {
+interface LinkType {
+  id: number;
+  title: string;
+  link: string;
+  linkType: string;
+}
+// 定义props类型
+interface ContainerProps {
+  links: LinkType[];
+}
+
+const Container: React.FC<ContainerProps> = ({ links }) => {
   // 组件内部使用hook
   const [t, i18n] = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const onLanChange = (e: any) => {
+    const locale = e.target.value === 0 ? "zh-CN" : "en-US";
+    i18n.changeLanguage(locale);
     setCurrentIndex(e.target.value);
-    console.log(e);
-    console.log(e.target.value);
   };
   return (
     <div className="container" style={{ height: "auto !important" }}>
@@ -50,118 +61,37 @@ const Container = () => {
               、<a href="https://github.com/yolkmen-wq">Github</a> 等。
             </p>
 
-            <h5 id="技术演讲">技术演讲</h5>
+            <h5 id="学习站点">学习站点</h5>
 
             <ul>
-              <li>
-                <a href="https://www.bilibili.com/video/BV1LY411Q7hC/?spm_id_from=333.999.0.0">
-                  React 国情咨文 2022
-                </a>{" "}
-                · 第七届中国开源年会 · 2023
-              </li>
-              <li>
-                <a href="https://reactjs.org/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022.html">
-                  React Labs: What We’ve Been Working On – June 2022
-                </a>{" "}
-                · React Blog
-              </li>
-              <li>
-                <a href="https://youtu.be/lGEMwh32soc">React Without Memo</a> ·{" "}
-                <a href="https://conf.reactjs.org/">React Conf 2021</a>
-              </li>
-              <li>
-                <a href="https://youtu.be/lGEMwh32soc">
-                  Toward Hermes being the Default
-                </a>{" "}
-                · React Native Blog · 2021
-              </li>
-              <li>
-                React Native 0.64 with Hermes for iOS ·{" "}
-                <a href="https://www.callstack.com/podcast-react-native-show">
-                  The RN Show Podcast Ep #5
-                </a>{" "}
-                · 2021
-              </li>
-              <li>
-                <a href="//huangxuan.me/jsconfcn2017/">
-                  Upgrading to Progressive Web Apps
-                </a>{" "}
-                ·{" "}
-                <a href="https://www.youtube.com/watch?v=RWzMF-1fjJ8&amp;t=1s">
-                  Youtube
-                </a>{" "}
-                · <a href="http://2017.jsconf.cn/">JSConf CN 上海 2017</a>
-              </li>
-              <li>
-                Building Progressive Web Apps ·{" "}
-                <a href="http://www.csdisummit.com/">CSDI 广州 2017</a>
-              </li>
-              <li>The State of Progressive Web App · GDG IO Redux 北京 2017</li>
-              <li>炒冷饭 ·&nbsp;PWA 到底是个什么玩意？· Baidu HQ 北京 2017</li>
-              <li>
-                <a href="//huangxuan.me/2016/11/20/sw-101-gdgdf/">
-                  Service Worker 101
-                </a>{" "}
-                · GDG DevFest 北京 2016
-              </li>
-              <li>
-                <a href="//huangxuan.me/2016/10/20/pwa-qcon2016/">
-                  Progressive Web App，复兴序章
-                </a>{" "}
-                ·{" "}
-                <a href="http://2016.qconshanghai.com/presentation/3111">
-                  QCon 上海 2016
-                </a>
-              </li>
-              <li>Progressive Web App 之我见 · GDG IO Redux 北京 2016</li>
-              <li>
-                <a href="//huangxuan.me/2015/12/28/css-sucks-2015/">
-                  CSS Still Sucks 2015
-                </a>{" "}
-                · 2015
-              </li>
-              <li>
-                <a href="//huangxuan.me/2015/07/09/js-module-7day/">
-                  JavaScript 模块化七日谈
-                </a>{" "}
-                · 2015
-              </li>
+              {links
+                .filter((link: LinkType) => link.linkType === "学习站点")
+                .map((link) => {
+                  return (
+                    <li>
+                      <a href={link.link} target="_blank">
+                        {link.title}
+                      </a>
+                    </li>
+                  );
+                })}
             </ul>
 
-            <h5 id="媒体关注">媒体关注</h5>
+            <h5 id="常用工具">常用工具</h5>
 
             <ul>
-              <li>
-                <a href="https://appycyfaqcq1951.pc.xiaoe-tech.com/p/t_pc/course_pc_detail/video/v_64477dbfe4b0cf39e6c11d2a">
-                  Hux 黄玄：从全局视角看 React 生态
-                </a>{" "}
-                · 直播 · 图灵 8 点半 · 2023
-              </li>
-              <li>
-                <a href="https://segmentfault.com/a/1190000043208486">
-                  2022 中国开源先锋 33 人
-                </a>{" "}
-                · SegmentFault · 2023
-              </li>
-              <li>
-                <a href="https://gitee.com/gitee-stars/30">
-                  React 黄玄：不懂艺术的 B-Boy 不是 Swag 的程序员
-                </a>{" "}
-                · Gitee 封面人物 · 2022
-              </li>
-              <li>
-                <a href="https://www.zhihu.com/zvideo/1542577108190068737?page=ogv">
-                  在硅谷当程序员是怎样的体验？
-                </a>{" "}
-                · 知乎
-                <a href="https://movie.douban.com/subject/36015036/">
-                  《我所向往的职业啊》
-                </a>{" "}
-                · 2022
-              </li>
+              {links
+                .filter((link: LinkType) => link.linkType === "常用工具")
+                .map((link) => {
+                  return (
+                    <li>
+                      <a href={link.link} target="_blank">
+                        {link.title}
+                      </a>
+                    </li>
+                  );
+                })}
             </ul>
-
-            {/* - [掘金 AMA：我是前端娱乐圈的老人 & Facebook 实习生 -- 黄玄][19] · 2018 */}
           </div>
 
           {/* English Version  */}
@@ -234,72 +164,36 @@ const Container = () => {
               .
             </p>
 
-            <h5 id="appearence">Appearence</h5>
+            <h5 id="Learning Site">Learning Site</h5>
 
             <ul>
-              <li>
-                <a href="https://reactjs.org/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022.html">
-                  React Labs: What We’ve Been Working On – June 2022
-                </a>{" "}
-                · React Blog · 2022
-              </li>
-              <li>
-                <a href="https://youtu.be/lGEMwh32soc">React Without Memo</a> ·{" "}
-                <a href="https://conf.reactjs.org/">React Conf 2021</a>
-              </li>
-              <li>
-                <a href="https://youtu.be/lGEMwh32soc">
-                  Toward Hermes being the Default
-                </a>{" "}
-                · React Native Blog · 2021
-              </li>
-              <li>
-                React Native 0.64 with Hermes for iOS ·{" "}
-                <a href="https://www.callstack.com/podcast-react-native-show">
-                  The RN Show Podcast Ep #5
-                </a>{" "}
-                · 2021
-              </li>
-              <li>
-                <a href="//huangxuan.me/jsconfcn2017/">
-                  Upgrading to Progressive Web Apps
-                </a>{" "}
-                ·{" "}
-                <a href="http://2017.jsconf.cn/">JSConf China Shanghai 2017</a>
-              </li>
-              <li>
-                Building Progressive Web Apps ·{" "}
-                <a href="http://www.csdisummit.com/">CSDI Guangzhou 2017</a>
-              </li>
-              <li>
-                The State of Progressive Web App · GDG IO Redux Beijing 2017
-              </li>
-              <li>PWA Rehashing · Baidu HQ Beijing 2017</li>
-              <li>
-                <a href="//huangxuan.me/2016/11/20/sw-101-gdgdf/">
-                  Service Worker 101
-                </a>{" "}
-                · GDG DevFest Beijing 2016
-              </li>
-              <li>
-                <a href="//huangxuan.me/2016/10/20/pwa-qcon2016/">
-                  Progressive Web Apps
-                </a>{" "}
-                · QCon Shanghai 2016
-              </li>
-              <li>Progressive Web App in my POV · GDG IO Redux Beijing 2016</li>
-              <li>
-                <a href="//huangxuan.me/2015/12/28/css-sucks-2015/">
-                  CSS Still Sucks 2015
-                </a>{" "}
-                · 2015
-              </li>
-              <li>
-                <a href="//huangxuan.me/2015/07/09/js-module-7day/">
-                  JavaScript Modularization Journey
-                </a>{" "}
-                · 2015
-              </li>
+              {links
+                .filter((link: LinkType) => link.linkType === "学习站点")
+                .map((link) => {
+                  return (
+                    <li>
+                      <a href={link.link} target="_blank">
+                        {link.title}
+                      </a>
+                    </li>
+                  );
+                })}
+            </ul>
+
+            <h5 id="Common Tools">Common Tools</h5>
+
+            <ul>
+              {links
+                .filter((link: LinkType) => link.linkType === "常用工具")
+                .map((link) => {
+                  return (
+                    <li>
+                      <a href={link.link} target="_blank">
+                        {link.title}
+                      </a>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
 
