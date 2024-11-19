@@ -5,6 +5,8 @@ import { getArticleById } from "@/api/article";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Footer from "@/components/Footer/Footer";
+import Comment from "@components/comment";
+
 interface Article {
   title?: string | undefined;
   date?: string | undefined; // 或者 Date 类型，具体视你的需求而定
@@ -31,6 +33,8 @@ const Detail = () => {
         tags={article?.tags}
       />
       {article?.content && <Content content={article?.content} />}
+      {id && <Comment articleId={id} type="article" />}
+
       <Footer />
     </Fragment>
   );

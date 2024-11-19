@@ -9,7 +9,6 @@ const SideBar = () => {
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    console.log("getArticleList");
     getTags().then((res: any) => {
       setTags(res.data.data);
     });
@@ -26,8 +25,12 @@ const SideBar = () => {
           <a href="/archive/">FEATURED TAGS</a>
         </h5>
         <div className="tags">
-          {tags.map((tag: any) => {
-            return <a title={tag.tagName}>{tag.tagName}</a>;
+          {tags.map((tag: any, idx: number) => {
+            return (
+              <a title={tag.tagName} key={idx}>
+                {tag.tagName}
+              </a>
+            );
           })}
           {/* // <a
           //   data-sort="0065"

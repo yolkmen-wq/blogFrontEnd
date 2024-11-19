@@ -23,9 +23,9 @@ const Container: React.FC<ContainerProps> = ({ articleList }) => {
           className="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
       col-xs-12 postlist-container"
         >
-          {articleList.map((article: any) => {
+          {articleList.map((article: any, idx: number) => {
             return (
-              <div>
+              <div key={idx}>
                 <div className="post-preview">
                   <a></a>
                   <Link to={`/detail/${article.id}`}>

@@ -41,7 +41,6 @@ const Content: React.FC<ContainerProps> = ({ content }) => {
     }
     getTags().then((res) => {
       setTags(res.data.data);
-      console.log(res);
     });
     return () => {
       observer?.disconnect();
@@ -117,9 +116,9 @@ const Content: React.FC<ContainerProps> = ({ content }) => {
                 <a href="/archive/">FEATURED TAGS</a>
               </h5>
               <div className="tags">
-                {tags.map((tag: any) => {
+                {tags.map((tag: any, idx: number) => {
                   return (
-                    <a title={tag.tagName} rel="14">
+                    <a title={tag.tagName} key={idx}>
                       {tag.tagName}
                     </a>
                   );

@@ -66,9 +66,9 @@ const Container: React.FC<ContainerProps> = ({ links }) => {
             <ul>
               {links
                 .filter((link: LinkType) => link.linkType === "学习站点")
-                .map((link) => {
+                .map((link, idx: number) => {
                   return (
-                    <li>
+                    <li key={idx}>
                       <a href={link.link} target="_blank">
                         {link.title}
                       </a>

@@ -32,7 +32,6 @@ const EditPage = () => {
 
   useEffect(() => {
     getTags().then((res) => {
-      console.log(res);
       setTags(res.data.data);
     });
   }, [getTags]);
