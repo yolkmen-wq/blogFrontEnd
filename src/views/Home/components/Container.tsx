@@ -46,7 +46,7 @@ const Container: React.FC<ContainerProps> = ({ articleList }) => {
           {articleList.length > 10 && (
             <ul className="pager">
               <li className="next">
-                <a href="javascript:void(0)">Older Posts →</a>
+                <a href="#">Older Posts →</a>
               </li>
             </ul>
           )}

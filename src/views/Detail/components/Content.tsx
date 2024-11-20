@@ -92,7 +92,7 @@ const Content: React.FC<ContainerProps> = ({ content }) => {
                         }`}
                         onClick={() => catalogClick(index)}
                       >
-                        <a href="javascript:void(0);">{h2.innerHTML}</a>
+                        <a href="#">{h2.innerHTML}</a>
                       </li>
                     )
                   )}

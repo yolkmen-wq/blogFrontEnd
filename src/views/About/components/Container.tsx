@@ -32,11 +32,12 @@ const Container: React.FC<ContainerProps> = ({ links }) => {
         col-xs-12 postlist-container"
         >
           {/* Language Selector */}
-          <select className="sel-lang" onChange={(event) => onLanChange(event)}>
-            <option value="0" selected={true}>
-              {" "}
-              中文 | Chinese{" "}
-            </option>
+          <select
+            className="sel-lang"
+            value={currentIndex}
+            onChange={(event) => onLanChange(event)}
+          >
+            <option value="0"> 中文 | Chinese </option>
             <option value="1"> 英文 | English </option>
           </select>
 
@@ -82,9 +83,9 @@ const Container: React.FC<ContainerProps> = ({ links }) => {
             <ul>
               {links
                 .filter((link: LinkType) => link.linkType === "常用工具")
-                .map((link) => {
+                .map((link: LinkType, idx: number) => {
                   return (
-                    <li>
+                    <li key={idx}>
                       <a href={link.link} target="_blank">
                         {link.title}
                       </a>
@@ -169,9 +170,9 @@ const Container: React.FC<ContainerProps> = ({ links }) => {
             <ul>
               {links
                 .filter((link: LinkType) => link.linkType === "学习站点")
-                .map((link) => {
+                .map((link: LinkType, idx: number) => {
                   return (
-                    <li>
+                    <li key={idx}>
                       <a href={link.link} target="_blank">
                         {link.title}
                       </a>
@@ -185,9 +186,9 @@ const Container: React.FC<ContainerProps> = ({ links }) => {
             <ul>
               {links
                 .filter((link: LinkType) => link.linkType === "常用工具")
-                .map((link) => {
+                .map((link: LinkType, idx: number) => {
                   return (
-                    <li>
+                    <li key={idx}>
                       <a href={link.link} target="_blank">
                         {link.title}
                       </a>

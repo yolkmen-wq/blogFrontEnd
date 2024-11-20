@@ -10,7 +10,6 @@ const Archive = () => {
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    console.log("getArticleList");
     (async function () {
       const res = await getArticleList();
       setArticleList(res.data);

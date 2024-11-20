@@ -10,10 +10,8 @@ const Home = () => {
   const [pageSize, setPageSize] = useState(10);
 
   useEffect(() => {
-    console.log("getArticleList");
     (async function () {
       const res = await getArticleList(pageNum, pageSize);
-      console.log(res);
       setArticleList(res.data);
     })();
   }, []);

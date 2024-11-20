@@ -45,7 +45,7 @@ const Nav = () => {
                   className="search-icon"
                   onClick={() => dispatch(setIsShowSearch())}
                 >
-                  <a href="javascript:void(0)">
+                  <a href="#">
                     <i className="fa fa-search"></i>
                   </a>
                 </li>
