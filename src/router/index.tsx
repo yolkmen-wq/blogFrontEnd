@@ -1,5 +1,7 @@
 import { createBrowserRouter, createHashRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import { Loading } from "@/assets/icon/icon";
+import { Spin } from "antd";
 const App = lazy(() => import("@/App"));
 const Home = lazy(() => import("@views/Home/Home"));
 const About = lazy(() => import("@views/About/About"));
@@ -11,7 +13,15 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <Spin
+            fullscreen={true}
+            indicator={<Loading />}
+            className="d-flex justify-center"
+          />
+        }
+      >
         {/* <Home /> */}
         <App />
       </Suspense>
@@ -20,7 +30,15 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <Spin
+                fullscreen={true}
+                indicator={<Loading />}
+                className="d-flex justify-center"
+              />
+            }
+          >
             <Home />
           </Suspense>
         ),
@@ -29,7 +47,15 @@ const router = createBrowserRouter([
         index: true,
         // path: "/about",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <Spin
+                fullscreen={true}
+                indicator={<Loading />}
+                className="d-flex justify-center"
+              />
+            }
+          >
             <About />
           </Suspense>
         ),
@@ -37,7 +63,15 @@ const router = createBrowserRouter([
       {
         path: "/archive",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <Spin
+                fullscreen={true}
+                indicator={<Loading />}
+                className="d-flex justify-center"
+              />
+            }
+          >
             <Archive />
           </Suspense>
         ),
@@ -47,7 +81,15 @@ const router = createBrowserRouter([
   {
     path: "/detail/:id",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <Spin
+            fullscreen={true}
+            indicator={<Loading />}
+            className="d-flex justify-center"
+          />
+        }
+      >
         <Detail />
       </Suspense>
     ),
@@ -55,7 +97,15 @@ const router = createBrowserRouter([
   {
     path: "/edit",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <Spin
+            fullscreen={true}
+            indicator={<Loading />}
+            className="d-flex justify-center"
+          />
+        }
+      >
         <EditPage />
       </Suspense>
     ),

@@ -12,7 +12,7 @@ const Archive = () => {
   useEffect(() => {
     (async function () {
       const res = await getArticleList();
-      setArticleList(res.data);
+      setArticleList(res.data.data.list);
 
       const res2 = await getTags();
       setTags(res2.data.data);

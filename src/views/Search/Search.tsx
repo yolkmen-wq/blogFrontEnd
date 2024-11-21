@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setIsShowSearch } from "@/store/modules/searchSlice";
 import { getArticleList } from "@/api/article";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 interface ArticleType {
   id: number;
   title: string;
@@ -28,7 +30,7 @@ const Search = () => {
 
     if (keyword !== "") {
       const res = await getArticleList(1, 999, keyword);
-      setArticleList(res.data);
+      setArticleList(res.data.data.list);
     }
   };
   return (
@@ -53,28 +55,18 @@ const Search = () => {
             />
 
             <div id="search-results" className="mini-post-list">
-              {articleList.map((item) => {
-                return (
-                  <div className="post-preview item">
-                    <a href="/2020/07/05/reflection-2020/">
-                      <h2 className="post-title">{item.title}</h2>
-                      <h3 className="post-subtitle">{item.brief}</h3>
-                      <hr />
-                    </a>
-                  </div>
-                );
-              })}
-              {/* <div className="post-preview item">
-                <a href="/2020/07/05/reflection-2020/">
-                  <h2 className="post-title">
-                    作为一个前端，看不懂@黄玄 的几乎每一个回答，只有我自己吗？
-                  </h2>
-                  <h3 className="post-subtitle">
-                    Taking this chance to reflect on myself
-                  </h3>
-                  <hr />
-                </a>
-              </div> */}
+              {articleList &&
+                articleList.map((article: ArticleType, idx: number) => {
+                  return (
+                    <div className="post-preview item" key={idx}>
+                      <Link to={`/detail/${article.id}`}>
+                        <h2 className="post-title">{article.title}</h2>
+                        <h3 className="post-subtitle">{article.brief}</h3>
+                        <hr />
+                      </Link>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>

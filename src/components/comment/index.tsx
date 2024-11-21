@@ -71,54 +71,55 @@ const Comment: React.FC<ICommentProps> = ({ articleId, type }) => {
     }
   };
 
-  /** 用户头像上传前触发的钩子函数 */
-  const beforeAvatarUpload = (file: File) => {
-    const isJPG = file.type === "image/jpeg";
-    const isPNG = file.type === "image/png";
-    const isLt2M = file.size / 1024 / 1024 < 1;
+  /* 暂时不用上传头像功能 */
+  // /** 用户头像上传前触发的钩子函数 */
+  // const beforeAvatarUpload = (file: File) => {
+  //   const isJPG = file.type === "image/jpeg";
+  //   const isPNG = file.type === "image/png";
+  //   const isLt2M = file.size / 1024 / 1024 < 1;
 
-    if (!isJPG && !isPNG) {
-      messageApi.open({
-        type: "error",
-        content: "上传头像图片只能是 JPG 或 PNG 格式!",
-      });
-    }
-    if (!isLt2M) {
-      messageApi.open({
-        type: "error",
-        content: "上传头像图片大小不能超过 1MB!",
-      });
-    }
-    return (isJPG || isPNG) && isLt2M;
-  };
+  //   if (!isJPG && !isPNG) {
+  //     messageApi.open({
+  //       type: "error",
+  //       content: "上传头像图片只能是 JPG 或 PNG 格式!",
+  //     });
+  //   }
+  //   if (!isLt2M) {
+  //     messageApi.open({
+  //       type: "error",
+  //       content: "上传头像图片大小不能超过 1MB!",
+  //     });
+  //   }
+  //   return (isJPG || isPNG) && isLt2M;
+  // };
 
-  /** 用户头像上传成功出发的钩子函数 */
-  const handleAvatarSuccess = async (res: {
-    success: boolean;
-    data: { url: string };
-  }) => {
-    if (res.success) {
-      let url = res.data.url;
-      let fileUrl = "";
-      url.split("\\").forEach((item) => {
-        fileUrl += item + "/";
-      });
-      fileUrl = fileUrl.substring(0, fileUrl.length - 1);
-      const filePath = process.env.REACT_APP_API_URL + fileUrl;
-      // store.commit("visitor/setVisitor", {
-      //   ...visitor.value,
-      //   portrait: filePath,
-      // });
-      /** 把上传的头像更新到数据库中 */
-      if (visitor.value.id) {
-        // await updatePortrait(visitor.value.id, filePath);
-        // store.commit("visitor/setVisitor", {
-        //   ...visitor.value,
-        //   portrait: filePath,
-        // });
-      }
-    }
-  };
+  // /** 用户头像上传成功出发的钩子函数 */
+  // const handleAvatarSuccess = async (res: {
+  //   success: boolean;
+  //   data: { url: string };
+  // }) => {
+  //   if (res.success) {
+  //     let url = res.data.url;
+  //     let fileUrl = "";
+  //     url.split("\\").forEach((item) => {
+  //       fileUrl += item + "/";
+  //     });
+  //     fileUrl = fileUrl.substring(0, fileUrl.length - 1);
+  //     const filePath = process.env.REACT_APP_API_URL + fileUrl;
+  //     // store.commit("visitor/setVisitor", {
+  //     //   ...visitor.value,
+  //     //   portrait: filePath,
+  //     // });
+  //     /** 把上传的头像更新到数据库中 */
+  //     if (visitor.value.id) {
+  //       // await updatePortrait(visitor.value.id, filePath);
+  //       // store.commit("visitor/setVisitor", {
+  //       //   ...visitor.value,
+  //       //   portrait: filePath,
+  //       // });
+  //     }
+  //   }
+  // };
 
   const handleChange: UploadProps["onChange"] = (info) => {
     // if(info.file.status === 'done'&&info.file.response.status==="success'){}
@@ -190,7 +191,7 @@ const Comment: React.FC<ICommentProps> = ({ articleId, type }) => {
             <Upload
               action={process.env.REACT_APP_API_URL + "/uploadImage"}
               showUploadList={false}
-              beforeUpload={beforeAvatarUpload}
+              // beforeUpload={beforeAvatarUpload}
               onChange={handleChange}
             >
               {visitor.portrait ? (
