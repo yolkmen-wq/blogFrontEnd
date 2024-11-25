@@ -2,11 +2,13 @@ import { Fragment, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIsShowSearch } from "@/store/modules/searchSlice";
+import classNames from "classnames";
 
 const Nav = () => {
   let location = useLocation();
   const dispatch = useDispatch();
   const [isInvert, setIsInvert] = useState(false);
+  const [isToggle, setToggle] = useState(false);
   useEffect(() => {
     location.pathname.indexOf("/detail") > -1 && setIsInvert(true);
   }, [location]);
@@ -19,7 +21,11 @@ const Nav = () => {
       >
         <div className="container-fluid">
           <div className="navbar-header page-scroll">
-            <button type="button" className="navbar-toggle">
+            <button
+              type="button"
+              className="navbar-toggle"
+              onClick={() => setToggle(!isToggle)}
+            >
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
@@ -29,8 +35,11 @@ const Nav = () => {
               WQ Blog
             </a>
           </div>
-          <div id="huxblog_navbar">
-            <div className="navbar-collapse">
+          <div id="huxblog_navbar" className={classNames({ in: isToggle })}>
+            <div
+              className={classNames("navbar-collapse")}
+              style={{ height: isToggle ? "auto" : "0px" }}
+            >
               <ul className="nav navbar-nav navbar-right">
                 <li>
                   <a href="/home/">Home</a>
