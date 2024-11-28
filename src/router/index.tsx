@@ -8,6 +8,7 @@ const About = lazy(() => import("@views/About/About"));
 const Archive = lazy(() => import("@views/Archive/Archive"));
 const Detail = lazy(() => import("@views/Detail/Detail"));
 const EditPage = lazy(() => import("@views/EditPage/EditPage"));
+const Resume = lazy(() => import("@views/Resume/Resume"));
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,22 @@ const router = createBrowserRouter([
             }
           >
             <Archive />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/my-resume",
+        element: (
+          <Suspense
+            fallback={
+              <Spin
+                fullscreen={true}
+                indicator={<Loading />}
+                className="d-flex justify-center"
+              />
+            }
+          >
+            <Resume />
           </Suspense>
         ),
       },
