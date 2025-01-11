@@ -92,7 +92,7 @@ export class Request {
         //   type: "error",
         // });
         // 这里是AxiosError类型，所以一般我们只reject我们需要的响应即可
-        return Promise.reject(err.response);
+        return Promise.reject(err.response.data.message as string);
       }
     );
   }

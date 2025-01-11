@@ -8,17 +8,18 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import "@assets/css/flower.css";
 import "@utils/pointer-flower";
+import { AliveScope } from "react-activation";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
-  <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router}></RouterProvider>
+      <AliveScope>
+        <RouterProvider router={router}></RouterProvider>
+      </AliveScope>
     </Provider>
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

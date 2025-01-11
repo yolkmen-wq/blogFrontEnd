@@ -2,6 +2,7 @@ import CommentInput from "./components/comment-input";
 import CommentItem from "./components/comment-item";
 import CommentModal from "./components/comment-modal";
 import { useState, createContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Avatar } from "@/assets/icon/icon";
 import {
   CommentTypeName,
@@ -20,11 +21,14 @@ interface ICommentProps {
 
 const Comment: React.FC<ICommentProps> = ({ articleId, type }) => {
   const [messageApi, contextHolder] = message.useMessage();
+  const navigate = useNavigate();
   const [visitor, setVisitor] = useState<any>({});
-  const [showDialog, setShowDialog] = useState(false);
+  // const [showDialog, setShowDialog] = useState(false);
   const [CommentValue, setCommentValue] = useState("");
   const [comments, setComments] = useState<any[]>([]);
-  const { id } = useSelector((state: any) => state.visitorSlice);
+  const visitorData = localStorage.getItem("visitor");
+  const parsedVisitor = visitorData ? JSON.parse(visitorData) : { id: null };
+  const { id } = parsedVisitor;
   const { commentList } = useSelector((state: any) => state.commentSlice);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -43,9 +47,9 @@ const Comment: React.FC<ICommentProps> = ({ articleId, type }) => {
     }
   }, [commentList]);
 
-  const setIsModalOpen = (isModalOpen: boolean) => {
-    setShowDialog(isModalOpen);
-  };
+  // const setIsModalOpen = (isModalOpen: boolean) => {
+  //   setShowDialog(isModalOpen);
+  // };
 
   const setVal = (val: string) => {
     setCommentValue(val);
@@ -128,7 +132,8 @@ const Comment: React.FC<ICommentProps> = ({ articleId, type }) => {
   /** 用户输入评论前，校验是否登录过 */
   const handleShowDialog = () => {
     if (!id) {
-      setShowDialog(true);
+      navigate("/login");
+      // setShowDialog(true);
     }
   };
 
@@ -252,7 +257,7 @@ const Comment: React.FC<ICommentProps> = ({ articleId, type }) => {
             </div>
           </div>
         )}
-        <CommentModal modelValue={showDialog} setIsModalOpen={setIsModalOpen} />
+        {/* <CommentModal modelValue={showDialog} setIsModalOpen={setIsModalOpen} /> */}
       </div>
     </div>
   );

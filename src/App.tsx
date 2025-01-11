@@ -1,6 +1,7 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import Nav from "@components/Nav/Nav";
 import Footer from "@components/Footer/Footer";
+
 function App() {
   return (
     <Fragment>

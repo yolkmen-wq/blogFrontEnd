@@ -12,6 +12,7 @@ const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     getLinks().then((res) => {
+      console.log(res.data)
       setLinks(res.data.data);
       sendAnalyticsData();
     });

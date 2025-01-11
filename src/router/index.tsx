@@ -1,8 +1,13 @@
-import { createBrowserRouter, createHashRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { Loading } from "@/assets/icon/icon";
 import { Spin } from "antd";
+import KeepAlive from "react-activation";
+
 const App = lazy(() => import("@/App"));
+const LoginOrRegister = lazy(
+  () => import("@/views/LoginOrRegister/LoginOrRegister")
+);
 const Home = lazy(() => import("@views/Home/Home"));
 const About = lazy(() => import("@views/About/About"));
 const Archive = lazy(() => import("@views/Archive/Archive"));
@@ -23,7 +28,6 @@ const router = createBrowserRouter([
           />
         }
       >
-        {/* <Home /> */}
         <App />
       </Suspense>
     ),
@@ -31,50 +35,51 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: (
-          <Suspense
-            fallback={
-              <Spin
-                fullscreen={true}
-                indicator={<Loading />}
-                className="d-flex justify-center"
-              />
-            }
-          >
-            <Home />
+            <Suspense
+              fallback={
+                <Spin
+                  fullscreen={true}
+                  indicator={<Loading />}
+                  className="d-flex justify-center"
+                />
+              }
+            >
+              <Home />
           </Suspense>
         ),
       },
       {
         index: true,
-        // path: "/about",
+        path: "/about",
+
         element: (
-          <Suspense
-            fallback={
-              <Spin
-                fullscreen={true}
-                indicator={<Loading />}
-                className="d-flex justify-center"
-              />
-            }
-          >
-            <About />
-          </Suspense>
+            <Suspense
+              fallback={
+                <Spin
+                  fullscreen={true}
+                  indicator={<Loading />}
+                  className="d-flex justify-center"
+                />
+              }
+            >
+              <About />
+            </Suspense>
         ),
       },
       {
         path: "/archive",
         element: (
-          <Suspense
-            fallback={
-              <Spin
-                fullscreen={true}
-                indicator={<Loading />}
-                className="d-flex justify-center"
-              />
-            }
-          >
-            <Archive />
-          </Suspense>
+            <Suspense
+              fallback={
+                <Spin
+                  fullscreen={true}
+                  indicator={<Loading />}
+                  className="d-flex justify-center"
+                />
+              }
+            >
+              <Archive />
+            </Suspense>
         ),
       },
       {
@@ -124,6 +129,22 @@ const router = createBrowserRouter([
         }
       >
         <EditPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/login",
+    element: (
+      <Suspense
+        fallback={
+          <Spin
+            fullscreen={true}
+            indicator={<Loading />}
+            className="d-flex justify-center"
+          />
+        }
+      >
+        <LoginOrRegister />
       </Suspense>
     ),
   },

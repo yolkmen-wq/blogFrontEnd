@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface VisitorState {
+interface VisitorInfo{
   id: string;
-  nickname: string;
+  username: string;
   email: string;
   ip: string;
+}
+interface VisitorState {
+  visitorInfo: Partial<VisitorInfo>;
 }
 
 const initialState: VisitorState =
@@ -12,7 +15,7 @@ const initialState: VisitorState =
     ? JSON.parse(localStorage.getItem("visitor") as string)
     : {
         id: "",
-        nickname: "",
+        username: "",
         email: "",
         ip: "",
       };
@@ -22,9 +25,8 @@ const visitorSlice = createSlice({
   initialState,
   reducers: {
     setVisitorInfo(state, action) {
-      state.nickname = action.payload.nickname;
-      state.email = action.payload.email;
-      state.ip = action.payload.ip;
+      state.visitorInfo = action.payload;
+      console.log(29,state.visitorInfo);
       localStorage.setItem("visitor", JSON.stringify(action.payload));
     },
   },

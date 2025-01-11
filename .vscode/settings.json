@@ -1,2 +1,9 @@
 {
+    "i18n-ally.localesPaths": [
+        "src/assets/locales"
+    ],
+    "marscode.codeCompletionPro": {
+        "enableCodeCompletionPro": false
+    },
+    "marscode.enableInlineCommand": true
 }

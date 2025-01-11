@@ -506,7 +506,7 @@ const Container = () => {
           <section className="visible-md visible-lg">
             <hr />
             <h5>
-              <a href="/about/">ABOUT ME</a>
+              <a href="/">ABOUT ME</a>
             </h5>
             <div className="short-about">
               <img src="https://github.com/Huxpro.png" />
